@@ -9,7 +9,7 @@ const galleryList = document.querySelector('.gallery');
 const createGalleryItem = ({ preview, original, description }) => {
     return `
     <li class="gallery__item">
-     <a class="gallery__link" href="${original}>
+     <a class="gallery__link" href="${original}">
         <img class="gallery__image"
                 src="${preview}"
                 data-source="${original}"
@@ -40,9 +40,11 @@ galleryList.addEventListener('click', (event) => {
 
 //zamykanie okna modalnego przyciskiem escape//
 document.addEventListener('keydown', (event) => {
-    const modalWindow = basicLightbox.getInstance();   // uzyskanie dostępu do aktualnie otwartego okna modalnego//
-
-    if (event.key === 'Escape' && modalWindow) {
-        modalWindow.close();
+    if (event.key === 'Escape') {
+        const modalWindow = document.querySelector('.basicLightbox--visible');
+        if (modalWindow) {
+            modalWindow.classList.remove('basicLightbox--visible');
+                }
+        
     }
 });
